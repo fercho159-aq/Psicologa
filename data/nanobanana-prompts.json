@@ -1,0 +1,104 @@
+{
+  "escuelaPadres": [
+    {
+      "id": "ep-1",
+      "title": "Confianza y Seguridad como Padres",
+      "prompt": "escena ilustrada cálida, madre y padre seguros de sí mismos abrazando a su hijo, tonos morados y dorados suaves, hogar familiar acogedor de fondo, estética de póster educativo profesional, iluminación suave, estilo caricatura, expresión esperanzadora, padres empoderados, texto en español si aparece",
+      "negativePrompt": "oscuro, aterrador, agresivo, fotorealista, sombras duras, feo, texto en inglés"
+    },
+    {
+      "id": "ep-2",
+      "title": "Detectar los Tipos de Comportamiento",
+      "prompt": "escena ilustrada cálida, padre o madre observando a un niño jugando con bloques coloridos, burbujas de pensamiento mostrando diferentes patrones de comportamiento, paleta morada y dorada, ambiente hogareño suave, estilo caricatura, estética de póster educativo, padre atento, niño curioso, texto en español si aparece",
+      "negativePrompt": "oscuro, aterrador, agresivo, fotorealista, sombras duras, feo, texto en inglés"
+    },
+    {
+      "id": "ep-3",
+      "title": "El Por Qué del Comportamiento",
+      "prompt": "escena ilustrada cálida, padre arrodillado al nivel del niño en conversación sincera, tonos morados y dorados, signos de interrogación y corazones flotando, estilo caricatura, estética de póster educativo, iluminación interior suave, expresiones empáticas, texto en español si aparece",
+      "negativePrompt": "oscuro, aterrador, agresivo, fotorealista, sombras duras, feo, texto en inglés"
+    },
+    {
+      "id": "ep-4",
+      "title": "Estimulación vs Elogio",
+      "prompt": "escena ilustrada cálida, padre e hijo haciendo actividad creativa juntos, símbolos de estrella y foco de luz, paleta morada y dorada, sala de estar acogedora, estilo caricatura, estética de póster educativo, padre alentador, niño dibujando concentrado, texto en español si aparece",
+      "negativePrompt": "oscuro, aterrador, agresivo, fotorealista, sombras duras, feo, texto en inglés"
+    },
+    {
+      "id": "ep-5",
+      "title": "Cómo Hablar para que mi Hijo Escuche",
+      "prompt": "escena ilustrada cálida, padre hablando con gentileza a un hijo atento, burbujas de diálogo con corazones, tonos morados y dorados, fondo hogareño suave, estilo caricatura, estética de póster educativo, comunicación tranquila, contacto visual, iluminación cálida, texto en español si aparece",
+      "negativePrompt": "oscuro, aterrador, agresivo, fotorealista, sombras duras, feo, texto en inglés"
+    },
+    {
+      "id": "ep-6",
+      "title": "Cómo Escuchar para que mi Hijo Hable",
+      "prompt": "escena ilustrada cálida, padre sentado cerca escuchando a su hijo contar una historia, símbolos de oreja y corazón, paleta morada y dorada, estilo caricatura, estética de póster educativo, postura de escucha activa, niño expresando alegría, ambiente acogedor con cobija, texto en español si aparece",
+      "negativePrompt": "oscuro, aterrador, agresivo, fotorealista, sombras duras, feo, texto en inglés"
+    },
+    {
+      "id": "ep-7",
+      "title": "Consecuencias Naturales y Lógicas",
+      "prompt": "escena ilustrada cálida, niño viviendo la consecuencia natural de sus acciones con padre de apoyo cerca, símbolo de balanza con corazones, tonos morados y dorados, estilo caricatura, estética de póster educativo, momento de aprendizaje, guía gentil, habitación iluminada por el sol, texto en español si aparece",
+      "negativePrompt": "oscuro, aterrador, agresivo, fotorealista, sombras duras, feo, texto en inglés"
+    }
+  ],
+  "capacidadesDiferentes": [
+    {
+      "id": "cd-1",
+      "title": "Autismo",
+      "prompt": "escena ilustrada inclusiva, niño con símbolo de pieza de rompecabezas jugando con los sentidos, adulto cuidador cerca, tonos verde azulado y morado cálidos, iluminación suave, atmósfera educativa esperanzadora, estilo caricatura, ambiente tranquilo y amigable a los sentidos, acentos de arcoíris, texto en español si aparece",
+      "negativePrompt": "oscuro, aterrador, agresivo, fotorealista, sombras duras, estereotipado, texto en inglés"
+    },
+    {
+      "id": "cd-2",
+      "title": "TDAH",
+      "prompt": "escena ilustrada inclusiva, niño enérgico con líneas de energía arremolinadas, maestro o padre paciente canalizando el enfoque con metáfora de faro, tonos verde azulado y naranja cálidos, estilo caricatura, atmósfera educativa esperanzadora, movimiento y creatividad, acentos morados suaves, texto en español si aparece",
+      "negativePrompt": "oscuro, aterrador, agresivo, fotorealista, sombras duras, estereotipado, texto en inglés"
+    },
+    {
+      "id": "cd-3",
+      "title": "Discapacidad Intelectual",
+      "prompt": "escena ilustrada inclusiva, niño y adulto cuidador trabajando juntos en rompecabezas colorido, celebración de pequeños logros, tonos verde azulado y morado cálidos, símbolos de corazón, estilo caricatura, estética de póster educativo, manos gentiles y de apoyo, atmósfera brillante y esperanzadora, texto en español si aparece",
+      "negativePrompt": "oscuro, aterrador, agresivo, fotorealista, sombras duras, estereotipado, texto en inglés"
+    },
+    {
+      "id": "cd-4",
+      "title": "Síndrome de Down",
+      "prompt": "escena ilustrada inclusiva, niño alegre con Síndrome de Down abrazando a un adulto, girasoles brillantes y corazones, tonos dorados y verde azulado cálidos, estilo caricatura, atmósfera educativa esperanzadora, salón de clases inclusivo, gran sonrisa, acentos morados suaves, texto en español si aparece",
+      "negativePrompt": "oscuro, aterrador, agresivo, fotorealista, sombras duras, estereotipado, texto en inglés"
+    },
+    {
+      "id": "cd-5",
+      "title": "Dislexia",
+      "prompt": "escena ilustrada inclusiva, niño con letras flotantes reordenándose en palabras, maestra apuntando a un libro, tonos verde azulado y morado cálidos, estilo caricatura, estética de póster educativo, momento de iluminación, arte creativo con letras en español, expresión esperanzadora, texto en español si aparece",
+      "negativePrompt": "oscuro, aterrador, agresivo, fotorealista, sombras duras, estereotipado, texto en inglés"
+    },
+    {
+      "id": "cd-6",
+      "title": "Ansiedad Infantil",
+      "prompt": "escena ilustrada inclusiva, niño envuelto en un abrazo cálido y gentil de adulto cuidador, nubes y sol asomando de fondo, tonos calmantes verde azulado y lavanda, estilo caricatura, atmósfera educativa esperanzadora, símbolos de respiración y calma, ambiente suave y seguro, texto en español si aparece",
+      "negativePrompt": "oscuro, aterrador, agresivo, fotorealista, sombras duras, estereotipado, texto en inglés"
+    }
+  ],
+  "general": [
+    {
+      "id": "gen-1",
+      "title": "Fondo del Hero",
+      "prompt": "ilustración de fondo morado oscuro elegante, patrones ornamentales dorados y motivos florales delicados, elementos decorativos mexicanos, listón de diploma y corona de laurel, paleta borgoña y dorada profunda, orbes con resplandor suave, estética educativa profesional, textura de lujo, texto decorativo en español si aparece",
+      "negativePrompt": "fotorealista, abigarrado, recargado, duro, neón, estética tecnológica moderna, texto en inglés"
+    },
+    {
+      "id": "gen-2",
+      "title": "Ilustración Divisora de Secciones",
+      "prompt": "ilustración de banner decorativo horizontal, siluetas cálidas de padres e hijos tomados de la mano, cielo con degradado morado y dorado, estrellas y corazones, estilo caricatura, formato panorámico amplio, calidez educativa y familiar, bordes con degradado suave, texto en español si aparece",
+      "negativePrompt": "fotorealista, oscuro, aterrador, colores estridentes, fondo recargado, texto en inglés"
+    },
+    {
+      "id": "gen-3",
+      "title": "Elementos Decorativos",
+      "prompt": "conjunto de íconos educativos decorativos, símbolos con contorno dorado incluyendo libro, corazón, estrella, silueta familiar, cerebro, pergamino de diploma, sobre fondo transparente, estilo ilustrado cálido, tonos morados y dorados, estética educativa profesional, etiquetas en español si aparece texto",
+      "negativePrompt": "fotorealista, duro, oscuro, neón, recargado, texto en inglés"
+    }
+  ]
+}
