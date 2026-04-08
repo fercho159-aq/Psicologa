@@ -3,68 +3,16 @@
 import { motion } from "framer-motion";
 import { ScanLine, Hand } from "lucide-react";
 
-/* ─── Placeholder QR SVG ────────────────────────────────────────────────── */
+/* ─── QR Image ──────────────────────────────────────────────────────────── */
 function QRPlaceholder() {
   return (
-    <svg
-      viewBox="0 0 200 200"
-      xmlns="http://www.w3.org/2000/svg"
-      className="w-full h-full"
-      aria-label="Código QR próximamente disponible"
-    >
-      {/* White background */}
-      <rect width="200" height="200" fill="white" rx="4" />
-
-      {/* ── Top-left position marker ── */}
-      <rect x="14" y="14" width="52" height="52" rx="4" fill="#1A0618" />
-      <rect x="20" y="20" width="40" height="40" rx="2" fill="white" />
-      <rect x="28" y="28" width="24" height="24" rx="1" fill="#1A0618" />
-
-      {/* ── Top-right position marker ── */}
-      <rect x="134" y="14" width="52" height="52" rx="4" fill="#1A0618" />
-      <rect x="140" y="20" width="40" height="40" rx="2" fill="white" />
-      <rect x="148" y="28" width="24" height="24" rx="1" fill="#1A0618" />
-
-      {/* ── Bottom-left position marker ── */}
-      <rect x="14" y="134" width="52" height="52" rx="4" fill="#1A0618" />
-      <rect x="20" y="140" width="40" height="40" rx="2" fill="white" />
-      <rect x="28" y="148" width="24" height="24" rx="1" fill="#1A0618" />
-
-      {/* ── Data modules (center grid pattern) ── */}
-      {[
-        [80, 14], [94, 14], [108, 14], [122, 14],
-        [80, 28], [108, 28],
-        [80, 42], [94, 42], [108, 42], [122, 42],
-        [80, 56], [122, 56],
-        [80, 70], [94, 70], [122, 70],
-
-        [14, 80], [28, 80], [56, 80], [70, 80],
-        [80, 80], [94, 80], [108, 80], [122, 80], [136, 80], [150, 80], [164, 80],
-        [14, 94], [42, 94], [70, 94], [94, 94], [122, 94], [150, 94],
-        [14, 108], [28, 108], [56, 108], [80, 108], [108, 108], [136, 108], [164, 108],
-        [14, 122], [42, 122], [70, 122], [94, 122], [108, 122], [136, 122],
-        [14, 136], [28, 136], [42, 136], [70, 136], [94, 136], [122, 136], [150, 136], [164, 136],
-
-        [80, 134], [108, 134], [136, 134],
-        [80, 148], [94, 148], [136, 148], [150, 148], [164, 148],
-        [80, 162], [122, 162], [136, 162],
-        [94, 176], [108, 176], [122, 176], [150, 176], [164, 176],
-      ].map(([x, y], i) => (
-        <rect key={i} x={x} y={y} width="10" height="10" rx="1" fill="#1A0618" />
-      ))}
-
-      {/* Próximamente overlay — subtle watermark */}
-      <text
-        x="100"
-        y="196"
-        textAnchor="middle"
-        fontSize="7"
-        fill="#9CA3AF"
-        fontFamily="system-ui, sans-serif"
-      >
-        Próximamente disponible
-      </text>
-    </svg>
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src="/assets/qr-videos.png"
+      alt="Código QR para acceder a los videos del diplomado"
+      className="w-full h-full object-contain"
+      draggable={false}
+    />
   );
 }
 
@@ -238,7 +186,7 @@ export function QRSection() {
             >
               <Hand className="w-4 h-4" />
               <span className="text-xs font-medium uppercase tracking-widest">
-                Próximamente disponible
+                Apunta tu cámara aquí
               </span>
             </motion.div>
           </motion.div>
