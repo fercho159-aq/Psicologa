@@ -1,36 +1,53 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Music, VolumeX, ChevronDown } from "lucide-react";
 
-const MUSIC_URL = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3";
+const PLAYLIST = [
+  { src: "/audio/la-magia-de-lupita.mp3", title: "La Magia de Lupita" },
+  { src: "/audio/lupita-me-calma.mp3", title: "Lupita Me Calma" },
+];
 
 export function HeroSection() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [trackIndex, setTrackIndex] = useState(0);
+  const [showTitle, setShowTitle] = useState(false);
 
   useEffect(() => {
-    const audio = new Audio(MUSIC_URL);
-    audio.loop = true;
+    const audio = new Audio(PLAYLIST[0].src);
     audio.volume = 0.4;
     audioRef.current = audio;
 
+    // Advance to next track when current ends
+    const onEnded = () => {
+      const next = (trackIndex + 1) % PLAYLIST.length;
+      setTrackIndex(next);
+      audio.src = PLAYLIST[next].src;
+      audio.play().catch(() => {});
+      setShowTitle(true);
+      setTimeout(() => setShowTitle(false), 3000);
+    };
+    audio.addEventListener("ended", onEnded);
+
     const handleUserInteraction = () => {
-      if (audioRef.current && !isPlaying) {
-        audioRef.current.play().then(() => setIsPlaying(true)).catch(() => {});
-      }
-      document.removeEventListener("click", handleUserInteraction);
-      document.removeEventListener("keydown", handleUserInteraction);
+      audio.play().then(() => {
+        setIsPlaying(true);
+        setShowTitle(true);
+        setTimeout(() => setShowTitle(false), 3000);
+      }).catch(() => {});
     };
 
     document.addEventListener("click", handleUserInteraction, { once: true });
     document.addEventListener("keydown", handleUserInteraction, { once: true });
 
     return () => {
+      audio.removeEventListener("ended", onEnded);
       audio.pause();
       audio.src = "";
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const toggleMusic = () => {
@@ -39,7 +56,11 @@ export function HeroSection() {
       audioRef.current.pause();
       setIsPlaying(false);
     } else {
-      audioRef.current.play().then(() => setIsPlaying(true)).catch(() => {});
+      audioRef.current.play().then(() => {
+        setIsPlaying(true);
+        setShowTitle(true);
+        setTimeout(() => setShowTitle(false), 3000);
+      }).catch(() => {});
     }
   };
 
@@ -206,6 +227,30 @@ export function HeroSection() {
           />
         </motion.div>
       </motion.a>
+
+      {/* Song title toast */}
+      <AnimatePresence>
+        {showTitle && (
+          <motion.div
+            initial={{ opacity: 0, y: 8, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 8, scale: 0.95 }}
+            transition={{ duration: 0.3 }}
+            className="fixed bottom-22 right-6 z-50 flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-medium pointer-events-none"
+            style={{
+              background: "rgba(42, 10, 38, 0.92)",
+              border: "1px solid rgba(200,164,0,0.3)",
+              color: "#C8A400",
+              backdropFilter: "blur(8px)",
+              boxShadow: "0 4px 16px rgba(0,0,0,0.4)",
+              bottom: "5.5rem",
+            }}
+          >
+            <Music className="w-3 h-3 flex-shrink-0" />
+            <span>{PLAYLIST[trackIndex].title}</span>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Music toggle */}
       <motion.button
