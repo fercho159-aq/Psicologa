@@ -92,7 +92,8 @@ export function CardsSlider({ cards }: { cards: CardData[] }) {
           {cards.map((card) => (
             <motion.div
               key={card.id}
-              className="min-w-[300px] max-w-[300px] h-[420px]"
+              className="h-[480px] flex-shrink-0"
+              style={{ width: "calc(50% - 10px)" }}
               whileHover={{ y: -8, transition: { duration: 0.3 } }}
             >
               <Card
@@ -105,7 +106,7 @@ export function CardsSlider({ cards }: { cards: CardData[] }) {
                 }}
               >
                 {/* Image */}
-                <div className="relative h-48 overflow-hidden">
+                <div className="relative h-64 overflow-hidden">
                   <motion.img
                     src={card.image}
                     alt={card.title}
@@ -146,16 +147,16 @@ export function CardsSlider({ cards }: { cards: CardData[] }) {
                 </div>
 
                 {/* Content */}
-                <div className="p-5 flex flex-col h-[calc(100%-12rem)] justify-between">
+                <div className="p-6 flex flex-col h-[calc(100%-16rem)] justify-between">
                   <div className="space-y-2">
                     <h3
-                      className="font-heading text-lg font-semibold leading-snug tracking-tight transition-colors group-hover:text-[#4BC8B8]"
+                      className="font-heading text-2xl font-semibold leading-snug tracking-tight transition-colors group-hover:text-[#4BC8B8]"
                       style={{ color: "#E8F5F3" }}
                     >
                       {card.title}
                     </h3>
                     <p
-                      className="line-clamp-3 text-xs leading-relaxed"
+                      className="line-clamp-3 text-sm leading-relaxed"
                       style={{ color: "#7AB8B0" }}
                     >
                       {card.description}
