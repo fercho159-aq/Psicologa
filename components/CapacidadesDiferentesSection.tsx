@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
-import { Brain, Zap, Heart, Sun, BookOpen, Wind, MessageCircle } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Brain, Zap, Heart, Sun, BookOpen, Wind, MessageCircle, ChevronLeft, ChevronRight } from "lucide-react";
 import { capacidadesDiferentes, type CapacidadDiferente } from "@/data/content";
 import { ContentModal } from "./ContentModal";
 
@@ -19,11 +19,9 @@ const iconMap: Record<string, React.ElementType> = {
 
 function CapacidadCard({
   item,
-  index,
   onClick,
 }: {
   item: CapacidadDiferente;
-  index: number;
   onClick: () => void;
 }) {
   const Icon = iconMap[item.id] || Heart;
@@ -33,17 +31,13 @@ function CapacidadCard({
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-30px" }}
-      transition={{ duration: 0.45, delay: index * 0.07 }}
       whileHover={{
         scale: 1.03,
         y: -5,
         boxShadow: "0 12px 40px rgba(75, 200, 184, 0.15), 0 4px 24px rgba(0,0,0,0.5)",
       }}
       onClick={onClick}
-      className="cursor-pointer rounded-2xl p-5 flex flex-col items-center gap-3.5 relative transition-all duration-300 group"
+      className="cursor-pointer rounded-2xl p-5 flex flex-col items-center gap-3.5 relative transition-all duration-300 group h-full"
       style={{
         background: "linear-gradient(150deg, rgba(42, 122, 111, 0.22) 0%, rgba(15, 45, 42, 0.7) 100%)",
         border: "1px solid rgba(75, 200, 184, 0.2)",
@@ -51,7 +45,6 @@ function CapacidadCard({
         boxShadow: "0 4px 24px rgba(0,0,0,0.3)",
       }}
     >
-      {/* Próximamente badge */}
       {isEmpty && (
         <div
           className="absolute top-3 right-3 px-2 py-0.5 rounded-full text-[10px] font-semibold"
@@ -65,14 +58,10 @@ function CapacidadCard({
         </div>
       )}
 
-      {/* Image or icon */}
       {item.flierImage ? (
         <div
           className="w-full overflow-hidden rounded-xl"
-          style={{
-            height: "150px",
-            border: "1px solid rgba(75, 200, 184, 0.2)",
-          }}
+          style={{ height: "200px", border: "1px solid rgba(75, 200, 184, 0.2)" }}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -94,29 +83,26 @@ function CapacidadCard({
         </div>
       )}
 
-      {/* Title */}
       <h3
-        className="font-heading text-lg font-semibold text-center leading-tight"
+        className="font-heading text-xl font-semibold text-center leading-tight"
         style={{ color: "#E8F5F3" }}
       >
         {item.title}
       </h3>
 
-      {/* Description */}
       <p
-        className="text-xs text-center leading-relaxed line-clamp-3"
+        className="text-sm text-center leading-relaxed line-clamp-3 flex-1"
         style={{ color: "#7AB8B0", lineHeight: "1.6" }}
       >
         {item.description}
       </p>
 
-      {/* WhatsApp button */}
       <a
         href={waUrl}
         target="_blank"
         rel="noopener noreferrer"
         onClick={(e) => e.stopPropagation()}
-        className="flex items-center justify-center gap-1.5 w-full py-2 rounded-xl text-xs font-semibold transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer mt-1"
+        className="flex items-center justify-center gap-1.5 w-full py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer mt-1"
         style={{
           background: "rgba(29, 168, 81, 0.14)",
           border: "1px solid rgba(29, 168, 81, 0.35)",
@@ -124,7 +110,7 @@ function CapacidadCard({
         }}
         aria-label="Contactar por WhatsApp"
       >
-        <MessageCircle className="w-3.5 h-3.5" />
+        <MessageCircle className="w-4 h-4" />
         Más información
       </a>
     </motion.div>
@@ -133,6 +119,28 @@ function CapacidadCard({
 
 export function CapacidadesDiferentesSection() {
   const [selectedItem, setSelectedItem] = useState<CapacidadDiferente | null>(null);
+  const [page, setPage] = useState(0);
+  const [direction, setDirection] = useState(1);
+
+  const total = capacidadesDiferentes.length;
+  const perPage = 2;
+  const totalPages = Math.ceil(total / perPage);
+
+  const paginate = (newPage: number) => {
+    setDirection(newPage > page ? 1 : -1);
+    setPage(newPage);
+  };
+
+  const prev = () => paginate(page === 0 ? totalPages - 1 : page - 1);
+  const next = () => paginate(page === totalPages - 1 ? 0 : page + 1);
+
+  const visibleItems = capacidadesDiferentes.slice(page * perPage, page * perPage + perPage);
+
+  const variants = {
+    enter: (dir: number) => ({ x: dir > 0 ? 80 : -80, opacity: 0 }),
+    center: { x: 0, opacity: 1 },
+    exit: (dir: number) => ({ x: dir > 0 ? -80 : 80, opacity: 0 }),
+  };
 
   return (
     <section
@@ -154,7 +162,7 @@ export function CapacidadesDiferentesSection() {
         />
       </div>
 
-      <div className="relative z-10 max-w-5xl mx-auto">
+      <div className="relative z-10 max-w-4xl mx-auto">
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -175,7 +183,6 @@ export function CapacidadesDiferentesSection() {
           >
             Capacidades Diferentes
           </h2>
-          {/* Teal divider */}
           <div className="flex items-center justify-center gap-3 mb-6">
             <div className="h-px flex-1 max-w-20" style={{ background: "rgba(75, 200, 184, 0.2)" }} />
             <div className="w-20 h-px" style={{ background: "linear-gradient(90deg, transparent, #2A7A6F, transparent)" }} />
@@ -191,16 +198,102 @@ export function CapacidadesDiferentesSection() {
           </p>
         </motion.div>
 
-        {/* Responsive grid — 2 cols on mobile, 3 cols on tablet+ */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-          {capacidadesDiferentes.map((item, index) => (
-            <CapacidadCard
-              key={item.id}
-              item={item}
-              index={index}
-              onClick={() => setSelectedItem(item)}
-            />
-          ))}
+        {/* Carousel */}
+        <div className="relative">
+          {/* Cards */}
+          <div className="overflow-hidden">
+            <AnimatePresence mode="wait" custom={direction}>
+              <motion.div
+                key={page}
+                custom={direction}
+                variants={variants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{ duration: 0.35, ease: "easeInOut" }}
+                className="grid grid-cols-1 md:grid-cols-2 gap-6"
+              >
+                {visibleItems.map((item) => (
+                  <CapacidadCard
+                    key={item.id}
+                    item={item}
+                    onClick={() => setSelectedItem(item)}
+                  />
+                ))}
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* Arrow buttons */}
+          <button
+            onClick={prev}
+            className="absolute -left-14 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 hidden md:flex"
+            style={{
+              background: "rgba(42, 122, 111, 0.25)",
+              border: "1px solid rgba(75, 200, 184, 0.3)",
+              color: "#4BC8B8",
+            }}
+            aria-label="Anterior"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+          <button
+            onClick={next}
+            className="absolute -right-14 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 hidden md:flex"
+            style={{
+              background: "rgba(42, 122, 111, 0.25)",
+              border: "1px solid rgba(75, 200, 184, 0.3)",
+              color: "#4BC8B8",
+            }}
+            aria-label="Siguiente"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+        </div>
+
+        {/* Mobile arrows + dots */}
+        <div className="flex items-center justify-center gap-4 mt-8">
+          <button
+            onClick={prev}
+            className="md:hidden w-9 h-9 rounded-full flex items-center justify-center"
+            style={{
+              background: "rgba(42, 122, 111, 0.25)",
+              border: "1px solid rgba(75, 200, 184, 0.3)",
+              color: "#4BC8B8",
+            }}
+            aria-label="Anterior"
+          >
+            <ChevronLeft className="w-4 h-4" />
+          </button>
+
+          <div className="flex gap-2">
+            {Array.from({ length: totalPages }).map((_, i) => (
+              <button
+                key={i}
+                onClick={() => paginate(i)}
+                className="rounded-full transition-all duration-300"
+                style={{
+                  width: i === page ? "24px" : "8px",
+                  height: "8px",
+                  background: i === page ? "#4BC8B8" : "rgba(75, 200, 184, 0.25)",
+                }}
+                aria-label={`Ir a página ${i + 1}`}
+              />
+            ))}
+          </div>
+
+          <button
+            onClick={next}
+            className="md:hidden w-9 h-9 rounded-full flex items-center justify-center"
+            style={{
+              background: "rgba(42, 122, 111, 0.25)",
+              border: "1px solid rgba(75, 200, 184, 0.3)",
+              color: "#4BC8B8",
+            }}
+            aria-label="Siguiente"
+          >
+            <ChevronRight className="w-4 h-4" />
+          </button>
         </div>
       </div>
 
