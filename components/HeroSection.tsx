@@ -160,25 +160,36 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.95 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center"
+          className="flex flex-col sm:flex-row gap-3 justify-center"
         >
           <a
             href="#escuela-padres"
-            className="cursor-pointer px-8 py-3.5 rounded-full font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:scale-105 hover:shadow-lg focus-visible:ring-2 focus-visible:ring-yellow-500/60"
+            className="cursor-pointer px-8 py-3.5 rounded-full font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:scale-105 active:scale-95 focus-visible:ring-2 focus-visible:ring-yellow-500/60"
             style={{
-              background: "linear-gradient(135deg, #C8A400, #E8C200)",
-              color: "#2D0A2A",
-              boxShadow: "0 4px 20px rgba(200,164,0,0.3)",
+              background: "linear-gradient(135deg, #C8A400 0%, #E8C200 60%, #C8A400 100%)",
+              backgroundSize: "200% auto",
+              color: "#1A0618",
+              boxShadow: "0 4px 24px rgba(200,164,0,0.35), 0 1px 0 rgba(255,255,255,0.15) inset",
             }}
           >
             Escuela para Padres
           </a>
           <a
             href="#capacidades-diferentes"
-            className="cursor-pointer px-8 py-3.5 rounded-full font-semibold text-sm uppercase tracking-wider border transition-all duration-300 hover:scale-105 hover:bg-[rgba(200,164,0,0.08)]"
+            className="cursor-pointer px-8 py-3.5 rounded-full font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:scale-105 active:scale-95"
             style={{
-              borderColor: "rgba(200, 164, 0, 0.45)",
+              background: "rgba(200,164,0,0.05)",
+              border: "1px solid rgba(200, 164, 0, 0.35)",
               color: "#C8A400",
+              boxShadow: "0 2px 16px rgba(0,0,0,0.3)",
+            }}
+            onMouseEnter={(e) => {
+              (e.currentTarget as HTMLElement).style.background = "rgba(200,164,0,0.1)";
+              (e.currentTarget as HTMLElement).style.borderColor = "rgba(200,164,0,0.55)";
+            }}
+            onMouseLeave={(e) => {
+              (e.currentTarget as HTMLElement).style.background = "rgba(200,164,0,0.05)";
+              (e.currentTarget as HTMLElement).style.borderColor = "rgba(200,164,0,0.35)";
             }}
           >
             Capacidades Diferentes
