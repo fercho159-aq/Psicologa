@@ -7,6 +7,10 @@ import { Music, VolumeX, ChevronDown } from "lucide-react";
 const PLAYLIST = [
   { src: "/audio/la-magia-de-lupita.mp3", title: "La Magia de Lupita" },
   { src: "/audio/lupita-me-calma.mp3", title: "Lupita Me Calma" },
+  { src: "/audio/lupita-audio-1.mpeg", title: "Lupita – Disciplina en el Aula" },
+  { src: "/audio/lupita-audio-2.mpeg", title: "Lupita – Disciplina en el Aula II" },
+  { src: "/audio/lupita-audio-3.mpeg", title: "Lupita – Disciplina en el Aula III" },
+  { src: "/audio/lupita-audio-4.mpeg", title: "Lupita – Disciplina en el Aula IV" },
 ];
 
 export function HeroSection() {
@@ -132,17 +136,6 @@ export function HeroSection() {
           }}
         >
           Escuela para Padres
-          <br />
-          <span
-            className="font-heading font-light italic"
-            style={{ color: "#C8A400" }}
-          >
-            &amp; Capacidades
-          </span>
-          <br />
-          <span className="font-heading font-light italic" style={{ color: "#C8A400" }}>
-            Diferentes
-          </span>
         </motion.h1>
 
         {/* Author attribution */}

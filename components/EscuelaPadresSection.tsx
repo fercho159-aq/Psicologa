@@ -192,6 +192,26 @@ export function EscuelaPadresSection() {
           </p>
         </motion.div>
 
+        {/* Flyer del Diplomado */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.1 }}
+          className="flex justify-center mb-12"
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/assets/flyer-diplomado.jpg"
+            alt="Flyer Diplomado en el Aula y en Familia"
+            className="w-full max-w-xs rounded-2xl"
+            style={{
+              border: "1px solid rgba(200, 164, 0, 0.3)",
+              boxShadow: "0 8px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(200,164,0,0.08)",
+            }}
+          />
+        </motion.div>
+
         {/* Modules grid + Capacidades Diferentes side by side */}
         <div className="flex flex-col lg:flex-row lg:items-start gap-8">
           {/* 7 module cards — left column */}
