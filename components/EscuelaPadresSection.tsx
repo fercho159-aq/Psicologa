@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Calendar, ArrowRight, MessageCircle } from "lucide-react";
 import { escuelaPadresModules, type EscuelaPadresModule } from "@/data/content";
 import { ContentModal } from "./ContentModal";
+import { CapacidadesDiferentesSection } from "./CapacidadesDiferentesSection";
 import { cn } from "@/lib/utils";
 
 const WHATSAPP_NUMBER = "5215521096740";
@@ -161,14 +162,20 @@ export function EscuelaPadresSection() {
             className="text-xs uppercase tracking-[0.3em] mb-3 font-medium"
             style={{ color: "rgba(200, 164, 0, 0.65)" }}
           >
-            Programa de Formación
+            Diplomado · 7 Herramientas
           </p>
           <h2
-            className="font-heading text-5xl md:text-6xl font-semibold mb-6 leading-tight"
+            className="font-heading text-5xl md:text-6xl font-semibold mb-3 leading-tight"
             style={{ color: "#F5EFE0" }}
           >
             Escuela para Padres
           </h2>
+          <p
+            className="font-heading text-xl md:text-2xl font-light italic mb-6"
+            style={{ color: "#C8A400" }}
+          >
+            Cómo cambiar de comportamientos inadecuados a comportamientos adecuados
+          </p>
           {/* Decorative divider */}
           <div className="flex items-center justify-center gap-3 mb-6">
             <div className="h-px flex-1 max-w-20" style={{ background: "rgba(200, 164, 0, 0.2)" }} />
@@ -185,25 +192,35 @@ export function EscuelaPadresSection() {
           </p>
         </motion.div>
 
-        {/* Modules grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {escuelaPadresModules.map((module, index) => {
-            const isLastAndOdd =
-              isLastOdd && index === escuelaPadresModules.length - 1;
-            return (
-              <ModuleCard
-                key={module.id}
-                module={module}
-                index={index}
-                onClick={() => setSelectedModule(module)}
-                className={
-                  isLastAndOdd
-                    ? "md:col-span-2 md:max-w-[calc(50%-12px)] md:mx-auto md:w-full"
-                    : ""
-                }
-              />
-            );
-          })}
+        {/* Modules grid + Capacidades Diferentes side by side */}
+        <div className="flex flex-col lg:flex-row lg:items-start gap-8">
+          {/* 7 module cards — left column */}
+          <div className="flex-1">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {escuelaPadresModules.map((module, index) => {
+                const isLastAndOdd =
+                  isLastOdd && index === escuelaPadresModules.length - 1;
+                return (
+                  <ModuleCard
+                    key={module.id}
+                    module={module}
+                    index={index}
+                    onClick={() => setSelectedModule(module)}
+                    className={
+                      isLastAndOdd
+                        ? "md:col-span-2 md:max-w-[calc(50%-12px)] md:mx-auto md:w-full"
+                        : ""
+                    }
+                  />
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Capacidades Diferentes — right column */}
+          <div className="lg:w-[360px] xl:w-[400px] flex-shrink-0" id="capacidades-diferentes">
+            <CapacidadesDiferentesSection compact />
+          </div>
         </div>
       </div>
 
@@ -216,6 +233,7 @@ export function EscuelaPadresSection() {
           flierImage={selectedModule.flierImage}
           youtubeUrl={selectedModule.youtubeUrl}
           badge={selectedModule.date}
+          content={selectedModule.content}
           whatsappMessage={`Hola! Me interesa el módulo *${selectedModule.title}* (${selectedModule.date}) de la Escuela para Padres. ¿Me podrías dar más información?`}
         />
       )}
