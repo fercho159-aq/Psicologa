@@ -15,9 +15,16 @@ export function Navbar() {
   }, []);
 
   const links = [
-    { href: "#escuela-padres", label: "Escuela para Padres" },
-    { href: "#capacidades-diferentes", label: "Capacidades Diferentes" },
+    { href: "#escuela-padres", label: "Escuela para Padres", openFlyer: true },
+    { href: "#capacidades-diferentes", label: "Capacidades Diferentes", openFlyer: false },
   ];
+
+  const handleLinkClick = (openFlyer: boolean) => {
+    if (openFlyer) {
+      window.dispatchEvent(new CustomEvent("openFlyerModal"));
+    }
+    setMenuOpen(false);
+  };
 
   return (
     <motion.nav
@@ -67,6 +74,7 @@ export function Navbar() {
             <a
               key={link.href}
               href={link.href}
+              onClick={() => handleLinkClick(link.openFlyer)}
               className="relative text-sm font-medium px-4 py-2 rounded-full transition-all duration-200 group cursor-pointer"
               style={{ color: "rgba(245, 239, 224, 0.7)" }}
               onMouseEnter={(e) => {
@@ -90,6 +98,7 @@ export function Navbar() {
           {/* CTA button */}
           <a
             href="#escuela-padres"
+            onClick={() => handleLinkClick(true)}
             className="ml-3 px-5 py-2 rounded-full text-sm font-semibold cursor-pointer transition-all duration-200 hover:scale-105 active:scale-95"
             style={{
               background: "linear-gradient(135deg, rgba(200,164,0,0.15), rgba(200,164,0,0.08))",
@@ -171,7 +180,7 @@ export function Navbar() {
                     (e.currentTarget as HTMLElement).style.background = "transparent";
                     (e.currentTarget as HTMLElement).style.color = "rgba(245,239,224,0.8)";
                   }}
-                  onClick={() => setMenuOpen(false)}
+                  onClick={() => handleLinkClick(link.openFlyer)}
                 >
                   {link.label}
                   <span style={{ color: "rgba(200,164,0,0.4)" }}>→</span>

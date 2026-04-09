@@ -222,34 +222,6 @@ export function EscuelaPadresSection() {
           </p>
         </motion.div>
 
-        {/* Flyer del Diplomado */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.1 }}
-          className="flex justify-center mb-14"
-        >
-          <div className="relative group">
-            {/* Glow behind flyer */}
-            <div
-              className="absolute -inset-3 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl pointer-events-none"
-              style={{ background: "radial-gradient(ellipse, rgba(200,164,0,0.2) 0%, transparent 70%)" }}
-              aria-hidden="true"
-            />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/assets/flyer-diplomado.jpg"
-              alt="Flyer Diplomado en el Aula y en Familia"
-              className="relative w-full max-w-[280px] rounded-2xl transition-transform duration-500 group-hover:scale-[1.02]"
-              style={{
-                border: "1px solid rgba(200, 164, 0, 0.3)",
-                boxShadow: "0 12px 50px rgba(0,0,0,0.6), 0 0 0 1px rgba(200,164,0,0.06), 0 -1px 0 rgba(200,164,0,0.15) inset",
-              }}
-            />
-          </div>
-        </motion.div>
-
         {/* Modules grid + Capacidades Diferentes side by side */}
         <div className="flex flex-col xl:flex-row xl:items-start gap-10">
           {/* 7 module cards — left column */}

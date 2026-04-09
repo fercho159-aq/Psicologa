@@ -3,6 +3,7 @@ import { EscuelaPadresSection } from "@/components/EscuelaPadresSection";
 import { QRSection } from "@/components/QRSection";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { FlyerModal } from "@/components/FlyerModal";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <EscuelaPadresSection />
       <QRSection />
       <Footer />
+      <FlyerModal />
     </main>
   );
 }
