@@ -14,6 +14,7 @@ interface ContentModalProps {
   youtubeUrl?: string;
   badge?: string;
   whatsappMessage: string;
+  content?: string[];
 }
 
 function getYouTubeEmbedUrl(url: string): string | null {
@@ -45,9 +46,10 @@ export function ContentModal({
   youtubeUrl,
   badge,
   whatsappMessage,
+  content,
 }: ContentModalProps) {
   const embedUrl = youtubeUrl ? getYouTubeEmbedUrl(youtubeUrl) : null;
-  const hasContent = !!(flierImage || embedUrl);
+  const hasContent = !!(flierImage || embedUrl || (content && content.length > 0));
 
   const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMessage)}`;
 
@@ -203,6 +205,29 @@ export function ContentModal({
                         <span className="text-sm" style={{ color: "rgba(200, 164, 0, 0.45)" }}>
                           Flier próximamente
                         </span>
+                      </div>
+                    )}
+
+                    {/* Text content from diplomado */}
+                    {content && content.length > 0 && (
+                      <div className="space-y-3">
+                        <h3
+                          className="font-heading text-sm font-semibold uppercase tracking-wider"
+                          style={{ color: "rgba(200, 164, 0, 0.7)" }}
+                        >
+                          Contenido del módulo
+                        </h3>
+                        <div className="space-y-3">
+                          {content.map((paragraph, i) => (
+                            <p
+                              key={i}
+                              className="text-sm leading-relaxed"
+                              style={{ color: "#C8B8C8" }}
+                            >
+                              {paragraph}
+                            </p>
+                          ))}
+                        </div>
                       </div>
                     )}
 
