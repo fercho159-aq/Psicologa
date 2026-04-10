@@ -222,10 +222,31 @@ export function EscuelaPadresSection() {
           </p>
         </motion.div>
 
-        {/* Modules grid + Capacidades Diferentes side by side */}
-        <div className="flex flex-col xl:flex-row xl:items-start gap-10">
-          {/* 7 module cards — left column */}
+        {/* Main layout: flyer + modules (left) | Capacidades Diferentes (right) */}
+        <div className="flex flex-col lg:flex-row lg:items-start gap-10">
+          {/* Left column: flyer overview + 7 module cards */}
           <div className="flex-1 min-w-0">
+            {/* Flyer overview image */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="mb-8 rounded-2xl overflow-hidden shadow-2xl"
+              style={{
+                border: "1px solid rgba(200,164,0,0.2)",
+                boxShadow: "0 8px 48px rgba(0,0,0,0.5), 0 0 0 1px rgba(200,164,0,0.08)",
+              }}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/assets/flyer-diplomado.jpg"
+                alt="Diplomado en el Aula y en Familia — 7 módulos"
+                className="w-full h-auto block"
+              />
+            </motion.div>
+
+            {/* 7 module cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               {escuelaPadresModules.map((module, index) => {
                 const isLastAndOdd =
@@ -248,13 +269,7 @@ export function EscuelaPadresSection() {
           </div>
 
           {/* Capacidades Diferentes — right column */}
-          <div className="xl:w-[380px] flex-shrink-0" id="capacidades-diferentes">
-            {/* Subtle vertical divider on xl */}
-            <div
-              className="hidden xl:block absolute w-px h-full"
-              aria-hidden="true"
-              style={{ background: "rgba(200,164,0,0.06)" }}
-            />
+          <div className="lg:w-[380px] flex-shrink-0" id="capacidades-diferentes">
             <CapacidadesDiferentesSection compact />
           </div>
         </div>

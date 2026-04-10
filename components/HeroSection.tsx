@@ -174,26 +174,6 @@ export function HeroSection() {
           >
             Escuela para Padres
           </a>
-          <a
-            href="#capacidades-diferentes"
-            className="cursor-pointer px-8 py-3.5 rounded-full font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:scale-105 active:scale-95"
-            style={{
-              background: "rgba(200,164,0,0.05)",
-              border: "1px solid rgba(200, 164, 0, 0.35)",
-              color: "#C8A400",
-              boxShadow: "0 2px 16px rgba(0,0,0,0.3)",
-            }}
-            onMouseEnter={(e) => {
-              (e.currentTarget as HTMLElement).style.background = "rgba(200,164,0,0.1)";
-              (e.currentTarget as HTMLElement).style.borderColor = "rgba(200,164,0,0.55)";
-            }}
-            onMouseLeave={(e) => {
-              (e.currentTarget as HTMLElement).style.background = "rgba(200,164,0,0.05)";
-              (e.currentTarget as HTMLElement).style.borderColor = "rgba(200,164,0,0.35)";
-            }}
-          >
-            Capacidades Diferentes
-          </a>
         </motion.div>
 
         {/* Bottom gold line */}
