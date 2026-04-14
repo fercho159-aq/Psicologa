@@ -266,6 +266,26 @@ export function EscuelaPadresSection() {
                 );
               })}
             </div>
+
+            {/* Imagen complementaria debajo de las tarjetas */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="mt-8 rounded-2xl overflow-hidden"
+              style={{
+                border: "1px solid rgba(200, 164, 0, 0.2)",
+                boxShadow: "0 8px 48px rgba(0,0,0,0.5)",
+              }}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/assets/flyer-whatsapp.jpeg"
+                alt="Información del diplomado"
+                className="w-full h-auto block"
+              />
+            </motion.div>
           </div>
 
           {/* Capacidades Diferentes — right column */}
