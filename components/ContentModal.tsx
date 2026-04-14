@@ -11,7 +11,7 @@ interface ContentModalProps {
   onClose: () => void;
   title: string;
   flierImage?: string;
-  youtubeUrl?: string;
+  youtubeUrls?: string[];
   badge?: string;
   whatsappMessage: string;
   content?: string[];
@@ -43,13 +43,15 @@ export function ContentModal({
   onClose,
   title,
   flierImage,
-  youtubeUrl,
+  youtubeUrls,
   badge,
   whatsappMessage,
   content,
 }: ContentModalProps) {
-  const embedUrl = youtubeUrl ? getYouTubeEmbedUrl(youtubeUrl) : null;
-  const hasContent = !!(flierImage || embedUrl || (content && content.length > 0));
+  const embedUrls = (youtubeUrls ?? [])
+    .map(getYouTubeEmbedUrl)
+    .filter((u): u is string => u !== null);
+  const hasContent = !!(flierImage || embedUrls.length > 0 || (content && content.length > 0));
 
   const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMessage)}`;
 
@@ -231,9 +233,10 @@ export function ContentModal({
                       </div>
                     )}
 
-                    {/* YouTube embed */}
-                    {embedUrl && (
+                    {/* YouTube embeds */}
+                    {embedUrls.map((embedUrl, i) => (
                       <div
+                        key={i}
                         className="rounded-xl overflow-hidden"
                         style={{
                           position: "relative",
@@ -244,7 +247,7 @@ export function ContentModal({
                       >
                         <iframe
                           src={embedUrl}
-                          title={title}
+                          title={`${title} — video ${i + 1}`}
                           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                           allowFullScreen
                           style={{
@@ -257,7 +260,7 @@ export function ContentModal({
                           }}
                         />
                       </div>
-                    )}
+                    ))}
                   </>
                 )}
               </div>

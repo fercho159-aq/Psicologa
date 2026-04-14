@@ -4,7 +4,7 @@ export interface EscuelaPadresModule {
   date: string;
   description: string;
   flierImage: string;
-  youtubeUrl: string;
+  youtubeUrls: string[];
   content?: string[];
 }
 
@@ -13,7 +13,7 @@ export interface CapacidadDiferente {
   title: string;
   description: string;
   flierImage: string;
-  youtubeUrl: string;
+  youtubeUrls: string[];
   content?: string[];
 }
 
@@ -24,7 +24,7 @@ export const escuelaPadresModules: EscuelaPadresModule[] = [
     date: "14 ABR 2026",
     description: "Fortalece tu autoconfianza como padre o madre para guiar a tus hijos con seguridad y amor.",
     flierImage: "/assets/generated/ep-1.webp",
-    youtubeUrl: "",
+    youtubeUrls: [],
     content: [
       "El adulto afianzado tiene seguridad en sí mismo y en los niños bajo su responsabilidad. Permite que el niño elija entre varias alternativas, estimula, propiciando que el menor confíe en sí mismo; contribuye, coopera, enfrenta los problemas y ejercita la creatividad.",
       "El adulto afianzado reconoce su naturaleza humana, tiene el coraje de saberse imperfecto y no exento de fallas, fija normas realistas, enfoca las virtudes y no se preocupa por guardar una imagen falsa de sí mismo. Es tolerante y paciente.",
@@ -39,7 +39,7 @@ export const escuelaPadresModules: EscuelaPadresModule[] = [
     date: "21 ABR 2026",
     description: "Aprende a identificar y comprender los diferentes patrones de comportamiento en tus hijos.",
     flierImage: "/assets/generated/ep-2.webp",
-    youtubeUrl: "",
+    youtubeUrls: [],
     content: [
       "Los niños que se portan mal son individuos frustrados y desalentados. No sienten pertenencia en el grupo familiar al comportarse de manera positiva, por lo que buscan esa pertenencia comportándose inadecuadamente.",
       "Rudolf Dreikurs clasificó el comportamiento inadecuado en cuatro grandes categorías: Atención, Poder, Revancha y Demostración de insuficiencia.",
@@ -59,7 +59,7 @@ export const escuelaPadresModules: EscuelaPadresModule[] = [
     date: "05 MAY 2026",
     description: "Descubre las razones profundas detrás de las conductas de tus hijos y cómo responder efectivamente.",
     flierImage: "/assets/generated/ep-3.webp",
-    youtubeUrl: "",
+    youtubeUrls: [],
     content: [
       "Las emociones nos mueven en la vida. Generalmente nuestras emociones se originan por las creencias que tenemos, no provienen de afuera; sin embargo, acostumbramos decir: 'me puso bravo', colocando con ello la responsabilidad de nuestras emociones en otros.",
       "Al igual que el comportamiento inadecuado sirve para un propósito, nuestras emociones se basan en nuestras creencias y en nuestros propósitos. SENTIMOS COMO CREEMOS, COMO PENSAMOS.",
@@ -75,7 +75,7 @@ export const escuelaPadresModules: EscuelaPadresModule[] = [
     date: "12 MAY 2026",
     description: "Conoce la diferencia entre estimular el crecimiento y simplemente elogiar a tus hijos.",
     flierImage: "/assets/generated/ep-4.webp",
-    youtubeUrl: "",
+    youtubeUrls: ["https://youtu.be/PL44Iz3yOx4"],
     content: [
       "El ELOGIO resalta el control externo: 'Eres valioso sólo cuando haces lo que quiero.' El niño aprende a medir su valor complaciendo o rebelándose.",
       "El ELOGIO resalta la evaluación externa: 'Para ser valioso debes complacerme.' El niño aprende a temer la desaprobación.",
@@ -92,7 +92,7 @@ export const escuelaPadresModules: EscuelaPadresModule[] = [
     date: "19 MAY 2026",
     description: "Técnicas de comunicación efectiva para que tus palabras realmente lleguen a tus hijos.",
     flierImage: "/assets/generated/ep-5.webp",
-    youtubeUrl: "",
+    youtubeUrls: ["https://youtu.be/20PcA8zWWN8"],
     content: [
       "El mensaje-yo simplemente describe cómo se siente usted frente al comportamiento del niño. Se centra en usted y no en el niño: reporta lo que siente usted, no acusa.",
       "Ejemplo: 'Cuando te haces el chistoso en el salón de clases a mí me da coraje, ya que el grupo se desorganiza y me cuesta trabajo volver a lo que estábamos.'",
@@ -108,7 +108,7 @@ export const escuelaPadresModules: EscuelaPadresModule[] = [
     date: "26 MAY 2026",
     description: "Desarrolla habilidades de escucha activa para crear un espacio seguro donde tus hijos se expresen.",
     flierImage: "/assets/generated/ep-6.webp",
-    youtubeUrl: "",
+    youtubeUrls: ["https://youtu.be/wocQXx4n7zU"],
     content: [
       "Ser un oyente eficaz requiere concentración: implica establecer un contacto visual y una determinada postura que muestre interés por el interlocutor.",
       "Escuchar reflexivamente significa dar respuestas abiertas que reflejan los sentimientos de las personas y sus significados. Requiere ser sensible a una gran variedad de sentimientos y tener la habilidad de expresarlos.",
@@ -124,7 +124,12 @@ export const escuelaPadresModules: EscuelaPadresModule[] = [
     date: "02 JUN 2026",
     description: "Aprende a usar consecuencias naturales y lógicas como herramientas de aprendizaje para tus hijos.",
     flierImage: "/assets/generated/ep-7.webp",
-    youtubeUrl: "",
+    youtubeUrls: [
+      "https://youtu.be/Ph1LuYvsWH8",
+      "https://youtu.be/2rHZZ_sf3U0",
+      "https://youtu.be/n-SOyIl5Nqc",
+      "https://youtu.be/J1sPILcZ0x0",
+    ],
     content: [
       "El sistema de premios y castigos no responsabiliza al educando de su comportamiento. Permite encubrirse y condiciona el comportamiento aprobado solamente en presencia de figuras de autoridad.",
       "Las CONSECUENCIAS NATURALES son el resultado de permitir que el niño experimente la realidad natural sin la intervención de los adultos.",
@@ -142,7 +147,7 @@ export const capacidadesDiferentes: CapacidadDiferente[] = [
     title: "Autismo",
     description: "Comprende el espectro autista y las estrategias para apoyar a niños con TEA en el hogar y la escuela.",
     flierImage: "/assets/generated/cd-1.webp",
-    youtubeUrl: "",
+    youtubeUrls: [],
     content: [
       "El Trastorno del Espectro Autista (TEA) se caracteriza por diferencias en la comunicación social y patrones de comportamiento repetitivos o restringidos.",
       "La adaptación curricular comienza por conocer las fortalezas individuales del niño y construir sobre ellas, respetando su ritmo de aprendizaje.",
@@ -155,7 +160,7 @@ export const capacidadesDiferentes: CapacidadDiferente[] = [
     title: "TDAH",
     description: "Herramientas prácticas para padres y maestros de niños con Trastorno por Déficit de Atención e Hiperactividad.",
     flierImage: "/assets/generated/cd-2.webp",
-    youtubeUrl: "",
+    youtubeUrls: [],
     content: [
       "El TDAH se manifiesta en dificultades de atención, impulsividad e hiperactividad que afectan el aprendizaje y las relaciones sociales.",
       "Las instrucciones breves y claras, dividir las tareas en pasos pequeños y ofrecer descansos frecuentes son estrategias efectivas en el aula.",
@@ -168,7 +173,7 @@ export const capacidadesDiferentes: CapacidadDiferente[] = [
     title: "Discapacidad Intelectual",
     description: "Estrategias inclusivas y amorosas para acompañar el desarrollo de niños con discapacidad intelectual.",
     flierImage: "/assets/generated/cd-3.webp",
-    youtubeUrl: "",
+    youtubeUrls: [],
     content: [
       "La adaptación curricular para niños con discapacidad intelectual implica ajustar los objetivos, metodologías y criterios de evaluación a las capacidades reales del estudiante.",
       "Cada niño tiene sus propias estrategias de aprendizaje. La educación abarca muchos aspectos; requerimos adaptación curricular para apoyarlos en el proceso educativo.",
@@ -181,7 +186,7 @@ export const capacidadesDiferentes: CapacidadDiferente[] = [
     title: "Síndrome de Down",
     description: "Recursos y enfoques positivos para potenciar las capacidades de niños con Síndrome de Down.",
     flierImage: "/assets/generated/cd-4.webp",
-    youtubeUrl: "",
+    youtubeUrls: [],
     content: [
       "Los niños con Síndrome de Down aprenden mejor en ambientes inclusivos, estimulantes y respetuosos de su ritmo propio.",
       "La estimulación temprana y la intervención oportuna en las áreas de lenguaje, motricidad y socialización marcan una gran diferencia en su desarrollo.",
@@ -194,7 +199,7 @@ export const capacidadesDiferentes: CapacidadDiferente[] = [
     title: "Dislexia",
     description: "Identifica y apoya a niños con dislexia con técnicas adaptadas para el aprendizaje de la lectoescritura.",
     flierImage: "/assets/generated/cd-5.webp",
-    youtubeUrl: "",
+    youtubeUrls: [],
     content: [
       "La dislexia es una dificultad específica del aprendizaje relacionada con la decodificación del lenguaje escrito, no con la inteligencia del niño.",
       "El apoyo debe centrarse en métodos multisensoriales, más tiempo para las actividades, y evaluaciones que reflejen el verdadero conocimiento del estudiante.",
@@ -207,7 +212,7 @@ export const capacidadesDiferentes: CapacidadDiferente[] = [
     title: "Ansiedad Infantil",
     description: "Comprende y acompaña a niños que experimentan ansiedad, con herramientas para el manejo emocional.",
     flierImage: "/assets/generated/cd-6.webp",
-    youtubeUrl: "",
+    youtubeUrls: [],
     content: [
       "La ansiedad infantil se expresa en muchas formas: miedos, quejas físicas, evitación escolar, irritabilidad o llanto frecuente.",
       "Escuchar reflexivamente es la primera herramienta: reconocer los sentimientos del niño sin minimizarlos ni magnificarlos.",

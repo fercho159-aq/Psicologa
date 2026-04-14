@@ -282,7 +282,7 @@ export function EscuelaPadresSection() {
           onClose={() => setSelectedModule(null)}
           title={selectedModule.title}
           flierImage={selectedModule.flierImage}
-          youtubeUrl={selectedModule.youtubeUrl}
+          youtubeUrls={selectedModule.youtubeUrls}
           badge={selectedModule.date}
           content={selectedModule.content}
           whatsappMessage={`Hola! Me interesa el módulo *${selectedModule.title}* (${selectedModule.date}) de la Escuela para Padres. ¿Me podrías dar más información?`}
