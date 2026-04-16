@@ -246,6 +246,62 @@ export function EscuelaPadresSection() {
               />
             </motion.div>
 
+            {/* CTA Bibliografía */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="mb-8 rounded-2xl px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-4"
+              style={{
+                background: "linear-gradient(135deg, rgba(200,164,0,0.10) 0%, rgba(80,28,72,0.35) 100%)",
+                border: "1px solid rgba(200, 164, 0, 0.30)",
+                boxShadow: "0 4px 32px rgba(200,164,0,0.08)",
+              }}
+            >
+              <div className="flex flex-col gap-1 text-center sm:text-left">
+                <span
+                  className="text-xs font-semibold uppercase tracking-widest"
+                  style={{ color: "rgba(200,164,0,0.7)" }}
+                >
+                  Material de apoyo
+                </span>
+                <p className="font-heading text-base font-semibold" style={{ color: "#F5EFE0" }}>
+                  Consulta las fuentes y referencias del diplomado
+                </p>
+              </div>
+              <a
+                href="/assets/bibliografia.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-shrink-0 flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-sm transition-all duration-200 hover:scale-105 hover:shadow-lg active:scale-95"
+                style={{
+                  background: "linear-gradient(135deg, #C8A400, #A07800)",
+                  color: "#1A0618",
+                  boxShadow: "0 4px 20px rgba(200,164,0,0.35)",
+                }}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-4 h-4 flex-shrink-0"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2.2}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                  <polyline points="14 2 14 8 20 8" />
+                  <line x1="16" y1="13" x2="8" y2="13" />
+                  <line x1="16" y1="17" x2="8" y2="17" />
+                  <polyline points="10 9 9 9 8 9" />
+                </svg>
+                Revisar bibliografía
+              </a>
+            </motion.div>
+
             {/* 7 module cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               {escuelaPadresModules.map((module, index) => {
