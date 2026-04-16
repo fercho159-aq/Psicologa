@@ -246,13 +246,54 @@ export function EscuelaPadresSection() {
               />
             </motion.div>
 
+            {/* 7 module cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              {escuelaPadresModules.map((module, index) => {
+                const isLastAndOdd =
+                  isLastOdd && index === escuelaPadresModules.length - 1;
+                return (
+                  <ModuleCard
+                    key={module.id}
+                    module={module}
+                    index={index}
+                    onClick={() => setSelectedModule(module)}
+                    className={
+                      isLastAndOdd
+                        ? "md:col-span-2 md:max-w-[calc(50%-10px)] md:mx-auto md:w-full"
+                        : ""
+                    }
+                  />
+                );
+              })}
+            </div>
+
+            {/* Imagen complementaria debajo de las tarjetas */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="mt-8 rounded-2xl overflow-hidden"
+              style={{
+                border: "1px solid rgba(200, 164, 0, 0.2)",
+                boxShadow: "0 8px 48px rgba(0,0,0,0.5)",
+              }}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/assets/flyer-whatsapp.jpeg"
+                alt="Información del diplomado"
+                className="w-full h-auto block"
+              />
+            </motion.div>
+
             {/* CTA Bibliografía */}
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="mb-8 rounded-2xl px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-4"
+              className="mt-5 rounded-2xl px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-4"
               style={{
                 background: "linear-gradient(135deg, rgba(200,164,0,0.10) 0%, rgba(80,28,72,0.35) 100%)",
                 border: "1px solid rgba(200, 164, 0, 0.30)",
@@ -300,47 +341,6 @@ export function EscuelaPadresSection() {
                 </svg>
                 Revisar bibliografía
               </a>
-            </motion.div>
-
-            {/* 7 module cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-              {escuelaPadresModules.map((module, index) => {
-                const isLastAndOdd =
-                  isLastOdd && index === escuelaPadresModules.length - 1;
-                return (
-                  <ModuleCard
-                    key={module.id}
-                    module={module}
-                    index={index}
-                    onClick={() => setSelectedModule(module)}
-                    className={
-                      isLastAndOdd
-                        ? "md:col-span-2 md:max-w-[calc(50%-10px)] md:mx-auto md:w-full"
-                        : ""
-                    }
-                  />
-                );
-              })}
-            </div>
-
-            {/* Imagen complementaria debajo de las tarjetas */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="mt-8 rounded-2xl overflow-hidden"
-              style={{
-                border: "1px solid rgba(200, 164, 0, 0.2)",
-                boxShadow: "0 8px 48px rgba(0,0,0,0.5)",
-              }}
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/assets/flyer-whatsapp.jpeg"
-                alt="Información del diplomado"
-                className="w-full h-auto block"
-              />
             </motion.div>
           </div>
 
