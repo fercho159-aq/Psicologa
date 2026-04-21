@@ -24,7 +24,7 @@ export const escuelaPadresModules: EscuelaPadresModule[] = [
     date: "14 ABR 2026",
     description: "Fortalece tu autoconfianza como padre o madre para guiar a tus hijos con seguridad y amor.",
     flierImage: "/assets/generated/ep-1.webp",
-    youtubeUrls: [],
+    youtubeUrls: ["https://youtu.be/n86g3ejYSD0", "https://youtu.be/LrOeC_-XEDI"],
     content: [
       "El adulto afianzado tiene seguridad en sí mismo y en los niños bajo su responsabilidad. Permite que el niño elija entre varias alternativas, estimula, propiciando que el menor confíe en sí mismo; contribuye, coopera, enfrenta los problemas y ejercita la creatividad.",
       "El adulto afianzado reconoce su naturaleza humana, tiene el coraje de saberse imperfecto y no exento de fallas, fija normas realistas, enfoca las virtudes y no se preocupa por guardar una imagen falsa de sí mismo. Es tolerante y paciente.",
@@ -39,7 +39,7 @@ export const escuelaPadresModules: EscuelaPadresModule[] = [
     date: "21 ABR 2026",
     description: "Aprende a identificar y comprender los diferentes patrones de comportamiento en tus hijos.",
     flierImage: "/assets/generated/ep-2.webp",
-    youtubeUrls: [],
+    youtubeUrls: ["https://youtu.be/8vEOFHbur9U", "https://youtu.be/9YANsOvTaCk"],
     content: [
       "Los niños que se portan mal son individuos frustrados y desalentados. No sienten pertenencia en el grupo familiar al comportarse de manera positiva, por lo que buscan esa pertenencia comportándose inadecuadamente.",
       "Rudolf Dreikurs clasificó el comportamiento inadecuado en cuatro grandes categorías: Atención, Poder, Revancha y Demostración de insuficiencia.",
@@ -59,7 +59,7 @@ export const escuelaPadresModules: EscuelaPadresModule[] = [
     date: "05 MAY 2026",
     description: "Descubre las razones profundas detrás de las conductas de tus hijos y cómo responder efectivamente.",
     flierImage: "/assets/generated/ep-3.webp",
-    youtubeUrls: [],
+    youtubeUrls: ["https://youtu.be/dxmAwefylas", "https://youtu.be/kqnUlj7lVEY"],
     content: [
       "Las emociones nos mueven en la vida. Generalmente nuestras emociones se originan por las creencias que tenemos, no provienen de afuera; sin embargo, acostumbramos decir: 'me puso bravo', colocando con ello la responsabilidad de nuestras emociones en otros.",
       "Al igual que el comportamiento inadecuado sirve para un propósito, nuestras emociones se basan en nuestras creencias y en nuestros propósitos. SENTIMOS COMO CREEMOS, COMO PENSAMOS.",
@@ -147,7 +147,7 @@ export const capacidadesDiferentes: CapacidadDiferente[] = [
     title: "Autismo",
     description: "Comprende el espectro autista y las estrategias para apoyar a niños con TEA en el hogar y la escuela.",
     flierImage: "/assets/generated/cd-1.webp",
-    youtubeUrls: [],
+    youtubeUrls: ["https://youtu.be/maElNnDJ2Yo", "https://youtu.be/JCQYWOpWW7Q"],
     content: [
       "El Trastorno del Espectro Autista (TEA) se caracteriza por diferencias en la comunicación social y patrones de comportamiento repetitivos o restringidos.",
       "La adaptación curricular comienza por conocer las fortalezas individuales del niño y construir sobre ellas, respetando su ritmo de aprendizaje.",
@@ -160,7 +160,7 @@ export const capacidadesDiferentes: CapacidadDiferente[] = [
     title: "TDAH",
     description: "Herramientas prácticas para padres y maestros de niños con Trastorno por Déficit de Atención e Hiperactividad.",
     flierImage: "/assets/generated/cd-2.webp",
-    youtubeUrls: [],
+    youtubeUrls: ["https://youtu.be/4PYdoIvj0MA", "https://youtu.be/mefS4di03Oc"],
     content: [
       "El TDAH se manifiesta en dificultades de atención, impulsividad e hiperactividad que afectan el aprendizaje y las relaciones sociales.",
       "Las instrucciones breves y claras, dividir las tareas en pasos pequeños y ofrecer descansos frecuentes son estrategias efectivas en el aula.",
@@ -212,7 +212,7 @@ export const capacidadesDiferentes: CapacidadDiferente[] = [
     title: "Ansiedad Infantil",
     description: "Comprende y acompaña a niños que experimentan ansiedad, con herramientas para el manejo emocional.",
     flierImage: "/assets/generated/cd-6.webp",
-    youtubeUrls: [],
+    youtubeUrls: ["https://youtu.be/ikwE1KL5Oco", "https://youtu.be/EK4hORra1K8"],
     content: [
       "La ansiedad infantil se expresa en muchas formas: miedos, quejas físicas, evitación escolar, irritabilidad o llanto frecuente.",
       "Escuchar reflexivamente es la primera herramienta: reconocer los sentimientos del niño sin minimizarlos ni magnificarlos.",
