@@ -170,7 +170,7 @@ export const capacidadesDiferentes: CapacidadDiferente[] = [
   },
   {
     id: "cd-3",
-    title: "Discapacidad Intelectual",
+    title: "Diversidad Intelectual",
     description: "Estrategias inclusivas y amorosas para acompañar el desarrollo de niños con discapacidad intelectual.",
     flierImage: "/assets/generated/cd-3.webp",
     youtubeUrls: [],
