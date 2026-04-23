@@ -173,7 +173,7 @@ export const capacidadesDiferentes: CapacidadDiferente[] = [
     title: "Diversidad Intelectual",
     description: "Estrategias inclusivas y amorosas para acompañar el desarrollo de niños con discapacidad intelectual.",
     flierImage: "/assets/generated/cd-3.webp",
-    youtubeUrls: [],
+    youtubeUrls: ["https://youtu.be/QNxXuFU1yNY", "https://youtu.be/jEh7PwjD97s"],
     content: [
       "La adaptación curricular para niños con discapacidad intelectual implica ajustar los objetivos, metodologías y criterios de evaluación a las capacidades reales del estudiante.",
       "Cada niño tiene sus propias estrategias de aprendizaje. La educación abarca muchos aspectos; requerimos adaptación curricular para apoyarlos en el proceso educativo.",
@@ -218,6 +218,32 @@ export const capacidadesDiferentes: CapacidadDiferente[] = [
       "Escuchar reflexivamente es la primera herramienta: reconocer los sentimientos del niño sin minimizarlos ni magnificarlos.",
       "Las emociones se originan por las creencias que tenemos. Ayudar al niño a identificar sus pensamientos ansiosos y reencuadrarlos es un proceso gradual y requiere paciencia.",
       "La aceptación y la paciencia son valores fundamentales: los niños no son máquinas y hay que trabajar con ellos tranquilamente, contribuir a su crecimiento con aceptación y confianza.",
+    ],
+  },
+  {
+    id: "cd-7",
+    title: "Conducta Alimentaria",
+    description: "Herramientas para identificar y acompañar a niños con dificultades en la conducta alimentaria.",
+    flierImage: "/assets/generated/cd-7.webp",
+    youtubeUrls: ["https://youtu.be/vgU9DYUMXYM", "https://youtu.be/51AU--0g2lY"],
+    content: [
+      "La conducta alimentaria en niños puede verse afectada por factores emocionales, sensoriales y del entorno familiar, más allá de una simple preferencia o capricho.",
+      "Establecer rutinas de alimentación tranquilas, sin presión ni castigo, favorece una relación sana con la comida desde temprana edad.",
+      "La sugestión positiva y el modelado del adulto son herramientas clave: los niños aprenden observando los hábitos alimentarios de quienes los rodean.",
+      "Cuando las dificultades persisten, la colaboración entre padres, docentes y especialistas permite diseñar estrategias adaptadas a cada niño.",
+    ],
+  },
+  {
+    id: "cd-8",
+    title: "Deserción Escolar",
+    description: "Estrategias para prevenir y atender la deserción escolar desde el hogar y el aula.",
+    flierImage: "/assets/generated/cd-8.webp",
+    youtubeUrls: ["https://youtu.be/Xk5dJm1JJZg"],
+    content: [
+      "La deserción escolar rara vez ocurre de forma repentina; suele ser el resultado acumulado de factores emocionales, familiares, académicos y sociales.",
+      "Detectar a tiempo las señales de desenganche — ausentismo, bajo rendimiento, aislamiento — permite intervenir antes de que el niño abandone definitivamente.",
+      "El vínculo afectivo con al menos un adulto significativo en la escuela es uno de los factores protectores más importantes contra la deserción.",
+      "La comunicación abierta entre familia y escuela, junto con la estimulación constante del esfuerzo, crea las condiciones para que el niño quiera quedarse.",
     ],
   },
 ];

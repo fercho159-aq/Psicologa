@@ -14,6 +14,8 @@ const CATEGORY_MAP: Record<string, string> = {
   "cd-4": "Síndrome de Down",
   "cd-5": "Aprendizaje",
   "cd-6": "Emocional",
+  "cd-7": "Alimentación",
+  "cd-8": "Escolar",
 };
 
 function CompactCard({
