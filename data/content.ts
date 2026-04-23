@@ -224,7 +224,7 @@ export const capacidadesDiferentes: CapacidadDiferente[] = [
     id: "cd-7",
     title: "Conducta Alimentaria",
     description: "Herramientas para identificar y acompañar a niños con dificultades en la conducta alimentaria.",
-    flierImage: "/assets/generated/cd-7.webp",
+    flierImage: "/assets/generated/cd-7.jpg",
     youtubeUrls: ["https://youtu.be/vgU9DYUMXYM", "https://youtu.be/51AU--0g2lY"],
     content: [
       "La conducta alimentaria en niños puede verse afectada por factores emocionales, sensoriales y del entorno familiar, más allá de una simple preferencia o capricho.",
@@ -237,7 +237,7 @@ export const capacidadesDiferentes: CapacidadDiferente[] = [
     id: "cd-8",
     title: "Deserción Escolar",
     description: "Estrategias para prevenir y atender la deserción escolar desde el hogar y el aula.",
-    flierImage: "/assets/generated/cd-8.webp",
+    flierImage: "/assets/generated/cd-8.jpg",
     youtubeUrls: ["https://youtu.be/Xk5dJm1JJZg"],
     content: [
       "La deserción escolar rara vez ocurre de forma repentina; suele ser el resultado acumulado de factores emocionales, familiares, académicos y sociales.",

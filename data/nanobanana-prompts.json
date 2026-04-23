@@ -79,6 +79,18 @@
       "title": "Ansiedad Infantil",
       "prompt": "escena ilustrada inclusiva, niño envuelto en un abrazo cálido y gentil de adulto cuidador, nubes y sol asomando de fondo, tonos calmantes verde azulado y lavanda, estilo caricatura, atmósfera educativa esperanzadora, símbolos de respiración y calma, ambiente suave y seguro, texto en español si aparece",
       "negativePrompt": "oscuro, aterrador, agresivo, fotorealista, sombras duras, estereotipado, texto en inglés"
+    },
+    {
+      "id": "cd-7",
+      "title": "Conducta Alimentaria",
+      "prompt": "escena ilustrada inclusiva, niño sentado en mesa con platos coloridos de frutas y verduras saludables, adulto cuidador paciente acompañando con sonrisa gentil, tonos verde azulado y morado cálidos, cocina hogareña acogedora, estilo caricatura, estética de póster educativo profesional, momento alimentario tranquilo, iluminación suave y cálida, atmósfera esperanzadora, acentos dorados suaves, texto en español si aparece",
+      "negativePrompt": "oscuro, aterrador, agresivo, fotorealista, sombras duras, estereotipado, texto en inglés"
+    },
+    {
+      "id": "cd-8",
+      "title": "Deserción Escolar",
+      "prompt": "escena ilustrada inclusiva, niño con mochila escolar caminando hacia una escuela cálidamente iluminada, maestra y padre acompañándolo con gesto motivador, símbolos de libros, estrellas y corazones flotando, tonos verde azulado y morado cálidos, estilo caricatura, estética de póster educativo profesional, camino hacia el aprendizaje, atmósfera esperanzadora y motivadora, acentos dorados suaves, texto en español si aparece",
+      "negativePrompt": "oscuro, aterrador, agresivo, fotorealista, sombras duras, estereotipado, texto en inglés"
     }
   ],
   "general": [
