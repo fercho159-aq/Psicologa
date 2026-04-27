@@ -9,10 +9,10 @@ export async function GET() {
   try {
     const sql = getDb();
     const rows = await sql`
-      SELECT id, nombre, comentario, created_at
+      SELECT id, nombre, comentario, rating, created_at
       FROM comments
       ORDER BY created_at DESC
-      LIMIT 50
+      LIMIT 100
     `;
     return NextResponse.json(rows);
   } catch (error) {
@@ -24,14 +24,12 @@ export async function GET() {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { nombre, comentario, honeypot } = body;
+    const { nombre, comentario, rating, honeypot } = body;
 
-    // Honeypot: si viene relleno es un bot
     if (honeypot) {
       return NextResponse.json({ error: "Invalid request" }, { status: 400 });
     }
 
-    // Validación básica
     if (!nombre || !comentario || typeof nombre !== "string" || typeof comentario !== "string") {
       return NextResponse.json({ error: "Nombre y comentario son requeridos" }, { status: 400 });
     }
@@ -42,9 +40,10 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Comentario debe tener entre 5 y 2000 caracteres" }, { status: 400 });
     }
 
+    const safeRating = typeof rating === "number" && rating >= 1 && rating <= 5 ? rating : 5;
+
     const sql = getDb();
 
-    // Rate limiting: 1 comentario por IP cada 2 minutos
     const clientIp =
       request.headers.get("x-forwarded-for")?.split(",")[0].trim() ||
       request.headers.get("x-real-ip") ||
@@ -63,11 +62,10 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Insertar comentario
     const result = await sql`
-      INSERT INTO comments (nombre, comentario, ip_address, user_agent)
-      VALUES (${nombre}, ${comentario}, ${clientIp}, ${request.headers.get("user-agent")})
-      RETURNING id, nombre, comentario, created_at
+      INSERT INTO comments (nombre, comentario, rating, ip_address, user_agent)
+      VALUES (${nombre}, ${comentario}, ${safeRating}, ${clientIp}, ${request.headers.get("user-agent")})
+      RETURNING id, nombre, comentario, rating, created_at
     `;
 
     return NextResponse.json(result[0]);
