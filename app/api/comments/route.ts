@@ -1,82 +1,76 @@
-import { Client } from "pg";
+import { neon } from "@neondatabase/serverless";
 import { NextRequest, NextResponse } from "next/server";
 
-const client = new Client({
-  connectionString: process.env.DATABASE_URL,
-});
-
-let isConnected = false;
-
-async function ensureConnection() {
-  if (!isConnected) {
-    await client.connect();
-    isConnected = true;
-  }
+function getDb() {
+  return neon(process.env.DATABASE_URL!);
 }
 
 export async function GET() {
   try {
-    await ensureConnection();
-
-    const result = await client.query(
-      "SELECT id, nombre, comentario, created_at FROM comments ORDER BY created_at DESC LIMIT 50"
-    );
-
-    return NextResponse.json(result.rows);
+    const sql = getDb();
+    const rows = await sql`
+      SELECT id, nombre, comentario, created_at
+      FROM comments
+      ORDER BY created_at DESC
+      LIMIT 50
+    `;
+    return NextResponse.json(rows);
   } catch (error) {
     console.error("Error fetching comments:", error);
-    return NextResponse.json({ error: "Error fetching comments" }, { status: 500 });
+    return NextResponse.json({ error: "Error al obtener comentarios" }, { status: 500 });
   }
 }
 
 export async function POST(request: NextRequest) {
   try {
-    await ensureConnection();
-
     const body = await request.json();
     const { nombre, comentario, honeypot } = body;
 
-    // Honeypot check (bots fill hidden fields)
+    // Honeypot: si viene relleno es un bot
     if (honeypot) {
       return NextResponse.json({ error: "Invalid request" }, { status: 400 });
     }
 
-    // Basic validation
+    // Validación básica
     if (!nombre || !comentario || typeof nombre !== "string" || typeof comentario !== "string") {
       return NextResponse.json({ error: "Nombre y comentario son requeridos" }, { status: 400 });
     }
-
     if (nombre.length < 2 || nombre.length > 255) {
       return NextResponse.json({ error: "Nombre debe tener entre 2 y 255 caracteres" }, { status: 400 });
     }
-
     if (comentario.length < 5 || comentario.length > 2000) {
       return NextResponse.json({ error: "Comentario debe tener entre 5 y 2000 caracteres" }, { status: 400 });
     }
 
-    // Rate limiting: check if this IP has posted in the last 2 minutes
-    const clientIp = request.headers.get("x-forwarded-for") || request.headers.get("x-real-ip") || "unknown";
-    const twoMinutesAgo = new Date(Date.now() - 2 * 60 * 1000);
+    const sql = getDb();
 
-    const recentComments = await client.query(
-      "SELECT COUNT(*) FROM comments WHERE ip_address = $1 AND created_at > $2",
-      [clientIp, twoMinutesAgo]
-    );
+    // Rate limiting: 1 comentario por IP cada 2 minutos
+    const clientIp =
+      request.headers.get("x-forwarded-for")?.split(",")[0].trim() ||
+      request.headers.get("x-real-ip") ||
+      "unknown";
 
-    if (parseInt(recentComments.rows[0].count) > 0) {
+    const recent = await sql`
+      SELECT COUNT(*) as count FROM comments
+      WHERE ip_address = ${clientIp}
+        AND created_at > NOW() - INTERVAL '2 minutes'
+    `;
+
+    if (parseInt(recent[0].count) > 0) {
       return NextResponse.json(
         { error: "Por favor espera unos minutos antes de dejar otro comentario" },
         { status: 429 }
       );
     }
 
-    // Insert comment
-    const result = await client.query(
-      "INSERT INTO comments (nombre, comentario, ip_address, user_agent) VALUES ($1, $2, $3, $4) RETURNING id, nombre, comentario, created_at",
-      [nombre, comentario, clientIp, request.headers.get("user-agent")]
-    );
+    // Insertar comentario
+    const result = await sql`
+      INSERT INTO comments (nombre, comentario, ip_address, user_agent)
+      VALUES (${nombre}, ${comentario}, ${clientIp}, ${request.headers.get("user-agent")})
+      RETURNING id, nombre, comentario, created_at
+    `;
 
-    return NextResponse.json(result.rows[0]);
+    return NextResponse.json(result[0]);
   } catch (error) {
     console.error("Error posting comment:", error);
     return NextResponse.json({ error: "Error al guardar comentario" }, { status: 500 });
