@@ -8,7 +8,7 @@ export async function POST(request: Request) {
     const { nombre, email, telefono, hijos, edades, razon } = await request.json();
 
     const { data, error } = await resend.emails.send({
-      from: 'GPS de la Disciplina <onboarding@resend.dev>',
+      from: 'GPS de la Disciplina <registro@grupoohm.com>',
       to: 'terapiabreve1@gmail.com',
       subject: `🧭 Nuevo registro: ${nombre}`,
       html: `
