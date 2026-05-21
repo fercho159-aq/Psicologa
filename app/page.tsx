@@ -5,6 +5,7 @@ import { CommentsSection } from "@/components/CommentsSection";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { FlyerModal } from "@/components/FlyerModal";
+import RegistroGPSForm from "@/components/RegistroGPSForm";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <EscuelaPadresSection />
       <QRSection />
       <CommentsSection />
+      <RegistroGPSForm />
       <Footer />
       <FlyerModal />
     </main>
