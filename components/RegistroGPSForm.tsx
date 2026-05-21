@@ -14,6 +14,8 @@ export default function RegistroGPSForm() {
     razon: ''
   });
   const [enviado, setEnviado] = useState(false);
+  const [cargando, setCargando] = useState(false);
+  const [error, setError] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
@@ -22,24 +24,28 @@ export default function RegistroGPSForm() {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setCargando(true);
+    setError('');
 
-    const mensaje = `🧭 *NUEVO REGISTRO - GPS de la Disciplina*
+    try {
+      const res = await fetch('/api/registro', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
 
-👤 *Nombre:* ${formData.nombre}
-📧 *Correo:* ${formData.email}
-📱 *Teléfono:* ${formData.telefono}
-👶 *Hijos:* ${formData.hijos}
-🎂 *Edades:* ${formData.edades}
-💬 *Motivación:* ${formData.razon}`;
+      if (!res.ok) throw new Error('Error al enviar');
 
-    const url = `https://wa.me/5521096740?text=${encodeURIComponent(mensaje)}`;
-    window.open(url, '_blank');
-
-    setEnviado(true);
-    setTimeout(() => setEnviado(false), 6000);
-    setFormData({ nombre: '', email: '', telefono: '', hijos: '', edades: '', razon: '' });
+      setEnviado(true);
+      setTimeout(() => setEnviado(false), 6000);
+      setFormData({ nombre: '', email: '', telefono: '', hijos: '', edades: '', razon: '' });
+    } catch {
+      setError('Hubo un problema al enviar. Intenta de nuevo o contáctanos por WhatsApp.');
+    } finally {
+      setCargando(false);
+    }
   };
 
   return (
@@ -165,7 +171,7 @@ export default function RegistroGPSForm() {
             {/* Términos */}
             <div className="bg-purple-50 p-4 rounded-lg border border-purple-200">
               <p className="text-sm text-purple-900">
-                ✓ Al enviar, se abrirá WhatsApp con tus datos para confirmar tu registro
+                ✓ Recibirás confirmación y nos pondremos en contacto contigo pronto
                 <br />
                 ✓ Tus datos serán utilizados solo para el evento
               </p>
@@ -174,15 +180,23 @@ export default function RegistroGPSForm() {
             {/* Botón envío */}
             <Button
               type="submit"
-              className="w-full bg-yellow-500 hover:bg-yellow-600 text-purple-900 font-bold py-3 text-lg rounded-lg transition transform hover:scale-105"
+              disabled={cargando}
+              className="w-full bg-yellow-500 hover:bg-yellow-600 text-purple-900 font-bold py-3 text-lg rounded-lg transition transform hover:scale-105 disabled:opacity-60 disabled:cursor-not-allowed"
             >
-              Regístrate Ahora
+              {cargando ? 'Enviando...' : 'Regístrate Ahora'}
             </Button>
 
             {/* Mensaje de éxito */}
             {enviado && (
               <div className="bg-green-100 border-2 border-green-500 text-green-700 px-4 py-3 rounded-lg text-center">
-                ✓ ¡Se abrió WhatsApp con tus datos! Envía el mensaje para completar tu registro.
+                ✅ ¡Registro completado! En breve nos pondremos en contacto contigo.
+              </div>
+            )}
+
+            {/* Mensaje de error */}
+            {error && (
+              <div className="bg-red-100 border-2 border-red-400 text-red-700 px-4 py-3 rounded-lg text-center">
+                ⚠️ {error}
               </div>
             )}
           </form>
