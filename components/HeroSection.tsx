@@ -4,9 +4,12 @@ import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Music, VolumeX, ChevronDown } from "lucide-react";
 
+// Las meditaciones ("Lupita Me Calma" y "La Magia de Lupita") ya NO viven aquí:
+// la clienta pidió que la sugestión auditiva se dé DESPUÉS del contenido, así que
+// ahora se reproducen dentro del modal de su módulo (ver data/content.ts → audios).
+// TODO: confirmar con la clienta a qué módulo pertenece cada "Disciplina en el Aula"
+// para moverlos también al modal correspondiente.
 const PLAYLIST = [
-  { src: "/audio/la-magia-de-lupita.mp3", title: "La Magia de Lupita" },
-  { src: "/audio/lupita-me-calma.mp3", title: "Lupita Me Calma" },
   { src: "/audio/lupita-audio-1.mpeg", title: "Lupita – Disciplina en el Aula" },
   { src: "/audio/lupita-audio-2.mpeg", title: "Lupita – Disciplina en el Aula II" },
   { src: "/audio/lupita-audio-3.mpeg", title: "Lupita – Disciplina en el Aula III" },
@@ -35,17 +38,7 @@ export function HeroSection() {
     };
     audio.addEventListener("ended", onEnded);
 
-    const handleUserInteraction = () => {
-      audio.play().then(() => {
-        setIsPlaying(true);
-        setShowTitle(true);
-        setTimeout(() => setShowTitle(false), 3000);
-      }).catch(() => {});
-    };
-
-    document.addEventListener("click", handleUserInteraction, { once: true });
-    document.addEventListener("keydown", handleUserInteraction, { once: true });
-
+    // Sin autoplay: el audio sólo arranca cuando la persona lo pide con el botón.
     return () => {
       audio.removeEventListener("ended", onEnded);
       audio.pause();

@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# staging de generación de imágenes: solo se versiona la referencia de familia
+data/nano/*.jpg
+!data/nano/referencia-familia.jpg

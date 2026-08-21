@@ -6,6 +6,7 @@ import { Calendar, ArrowRight, MessageCircle } from "lucide-react";
 import { escuelaPadresModules, type EscuelaPadresModule } from "@/data/content";
 import { ContentModal } from "./ContentModal";
 import { CapacidadesDiferentesSection } from "./CapacidadesDiferentesSection";
+import { LlevarAEscuelaCTA } from "./LlevarAEscuelaCTA";
 import { cn } from "@/lib/utils";
 
 const WHATSAPP_NUMBER = "5215521096740";
@@ -267,6 +268,9 @@ export function EscuelaPadresSection() {
               })}
             </div>
 
+            {/* Invitación a llevar el diplomado a las escuelas */}
+            <LlevarAEscuelaCTA />
+
             {/* Imagen complementaria debajo de las tarjetas */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -361,6 +365,7 @@ export function EscuelaPadresSection() {
           youtubeUrls={selectedModule.youtubeUrls}
           badge={selectedModule.date}
           content={selectedModule.content}
+          audios={selectedModule.audios}
           whatsappMessage={`Hola! Me interesa el módulo *${selectedModule.title}* (${selectedModule.date}) de la Escuela para Padres. ¿Me podrías dar más información?`}
         />
       )}

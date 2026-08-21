@@ -2,7 +2,8 @@
 
 import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Loader2, ImageOff } from "lucide-react";
+import { X, Loader2, ImageOff, Headphones } from "lucide-react";
+import type { ModuleAudio } from "@/data/content";
 
 const WHATSAPP_NUMBER = "5215521096740";
 
@@ -15,6 +16,7 @@ interface ContentModalProps {
   badge?: string;
   whatsappMessage: string;
   content?: string[];
+  audios?: ModuleAudio[];
 }
 
 function getYouTubeEmbedUrl(url: string): string | null {
@@ -47,11 +49,17 @@ export function ContentModal({
   badge,
   whatsappMessage,
   content,
+  audios,
 }: ContentModalProps) {
   const embedUrls = (youtubeUrls ?? [])
     .map(getYouTubeEmbedUrl)
     .filter((u): u is string => u !== null);
-  const hasContent = !!(flierImage || embedUrls.length > 0 || (content && content.length > 0));
+  const hasContent = !!(
+    flierImage ||
+    embedUrls.length > 0 ||
+    (content && content.length > 0) ||
+    (audios && audios.length > 0)
+  );
 
   const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMessage)}`;
 
@@ -261,6 +269,37 @@ export function ContentModal({
                         />
                       </div>
                     ))}
+
+                    {/* Sugestión auditiva / meditación — SIEMPRE al final, después del contenido */}
+                    {audios && audios.length > 0 && (
+                      <div className="space-y-3 pt-1">
+                        <h3
+                          className="font-heading text-sm font-semibold uppercase tracking-wider flex items-center gap-2"
+                          style={{ color: "rgba(200, 164, 0, 0.7)" }}
+                        >
+                          <Headphones className="w-4 h-4 flex-shrink-0" />
+                          Sugestión auditiva y meditación
+                        </h3>
+                        <p className="text-xs leading-relaxed" style={{ color: "rgba(184,154,184,0.75)" }}>
+                          Cuando termines de leer el contenido, busca un lugar tranquilo y escucha.
+                        </p>
+                        {audios.map((audio) => (
+                          <div
+                            key={audio.src}
+                            className="rounded-xl px-4 py-3 space-y-2"
+                            style={{
+                              background: "rgba(200, 164, 0, 0.05)",
+                              border: "1px solid rgba(200, 164, 0, 0.18)",
+                            }}
+                          >
+                            <span className="text-sm font-medium block" style={{ color: "#F5EFE0" }}>
+                              {audio.title}
+                            </span>
+                            <audio src={audio.src} controls preload="none" className="w-full" />
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </>
                 )}
               </div>

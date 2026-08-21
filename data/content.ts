@@ -1,3 +1,8 @@
+export interface ModuleAudio {
+  src: string;
+  title: string;
+}
+
 export interface EscuelaPadresModule {
   id: string;
   title: string;
@@ -6,6 +11,8 @@ export interface EscuelaPadresModule {
   flierImage: string;
   youtubeUrls: string[];
   content?: string[];
+  /** Sugestión auditiva / meditación. Se muestra SIEMPRE al final, después del texto y los videos. */
+  audios?: ModuleAudio[];
 }
 
 export interface CapacidadDiferente {
@@ -15,6 +22,8 @@ export interface CapacidadDiferente {
   flierImage: string;
   youtubeUrls: string[];
   content?: string[];
+  /** Sugestión auditiva / meditación. Se muestra SIEMPRE al final, después del texto y los videos. */
+  audios?: ModuleAudio[];
 }
 
 export const escuelaPadresModules: EscuelaPadresModule[] = [
@@ -31,6 +40,11 @@ export const escuelaPadresModules: EscuelaPadresModule[] = [
       "En contraste, el adulto quebrantado tiene poca confianza en sí mismo. Para ganar un respeto que no tiene consigo, exige obediencia, premia y castiga, trata de ganar en todas las situaciones. La posible consecuencia es la rebeldía del joven.",
       "Si tenemos el anhelo de vivir en una sociedad democrática, una buena forma de comenzar es educando a los niños bajo el modelo de la estimulación y el respeto mutuo.",
       "Los errores pueden ser considerados como oportunidades de aprendizaje. Desarrolle el coraje de hacerle frente a los retos que la vida le presente.",
+    ],
+    // La clienta pidió expresamente: primero el contenido, después la sugestión auditiva.
+    audios: [
+      { src: "/audio/lupita-me-calma.mp3", title: "Lupita Me Calma" },
+      { src: "/audio/la-magia-de-lupita.mp3", title: "La Magia de Lupita" },
     ],
   },
   {

@@ -204,6 +204,7 @@ export function CapacidadesDiferentesSection({ compact = false }: CapacidadesDif
             flierImage={selectedItem.flierImage}
             youtubeUrls={selectedItem.youtubeUrls}
             content={selectedItem.content}
+            audios={selectedItem.audios}
             whatsappMessage={`Hola! Me interesa información sobre *${selectedItem.title}* del programa Capacidades Diferentes. ¿Me podrías dar más información?`}
           />
         )}
@@ -297,6 +298,7 @@ export function CapacidadesDiferentesSection({ compact = false }: CapacidadesDif
           flierImage={selectedItem.flierImage}
           youtubeUrls={selectedItem.youtubeUrls}
           content={selectedItem.content}
+            audios={selectedItem.audios}
           whatsappMessage={`Hola! Me interesa información sobre *${selectedItem.title}* del programa Capacidades Diferentes. ¿Me podrías dar más información?`}
         />
       )}
