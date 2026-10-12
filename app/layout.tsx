@@ -16,9 +16,9 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Diplomado en el Aula y en Familia — Mtra. Maria Guadalupe Aviña",
+  title: "GPS de las Emociones — Mtra. Maria Guadalupe Aviña",
   description:
-    "Escuela para Padres y Capacidades Diferentes. Programa de formación familiar por la Mtra. Maria Guadalupe Aviña.",
+    "Diplomado en el Aula y en Familia: Escuela para Padres y Capacidades Diferentes. Programa de formación familiar por la Mtra. Maria Guadalupe Aviña.",
 };
 
 export default function RootLayout({

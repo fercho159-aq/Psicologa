@@ -63,7 +63,7 @@ export function Navbar() {
               className="text-[10px] font-light tracking-wider mt-0.5 transition-colors duration-200"
               style={{ color: "rgba(200, 164, 0, 0.45)" }}
             >
-              Diplomado en el Aula y en Familia
+              GPS de las Emociones
             </span>
           </div>
         </a>

@@ -128,7 +128,7 @@ export function HeroSection() {
             textShadow: "0 2px 40px rgba(200, 164, 0, 0.15)",
           }}
         >
-          Escuela para Padres
+          GPS de las Emociones
         </motion.h1>
 
         {/* Author attribution */}
